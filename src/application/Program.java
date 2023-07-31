@@ -1,34 +1,29 @@
 package application;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
+import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class Program {
 	public static void main(String[] args) {
 		
-		//Set<String> set = new HashSet<>(); // DADOS DESORDENADOS
-		//Set<String> set = new TreeSet<>(); // DADOS ORDENADOS
-		Set<String> set = new LinkedHashSet<>(); // MANTEM A ORDEM
+		Set<Integer> a = new TreeSet<>(Arrays.asList(0,2,4,5,6,8,10));
+		Set<Integer> b = new TreeSet<>(Arrays.asList(5,6,7,8,9,10));
+	
+		//union (UNIÃO)
+		Set<Integer> c = new TreeSet<>(a);
+		c.addAll(b);
+		System.out.println(c);
 		
-		//ADICIONA OS VALORES NO SET TIPO STRING
-		set.add("Tv");
-		set.add("Tablet");
-		set.add("Notebook");
-		set.add("Geladeira");
-		set.add("Fogão");
-		set.add("Armario");
+		//intersection (INTERSECÇÃO) SOMENTE AQUELES ELEMENTOS EM COMUM
+		Set<Integer> d = new TreeSet<>(a);
+		d.retainAll(b);
+		System.out.println(d);
 		
-		set.remove("Fogão"); // REMOVE DE ACORDO COM O VALOR DESEJADO
-		set.removeIf(x -> x.length() > 9); // REMOVE TODOS OS QUE SATISFAZER O PREDICADO DESEJADO. (Nesse caso palavras com mais letras que 9)
-		set.removeIf(x -> x.charAt(0) == 'T'); // REMOVE TODOS QUE TEM A O VALOR IGUAL A PRIMEIRA LETRA T
+		//difference (DIFERENÇA)
+		Set<Integer> e = new TreeSet<>(a);
+		e.removeAll(b);
+		System.out.println(e);
 		
-		System.out.println(set.contains("Notebook"));
-		
-		for (String p: set) {
-			System.out.println(p);
-		}
 	}
-
 }
